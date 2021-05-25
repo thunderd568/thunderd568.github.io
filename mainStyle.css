@@ -1,0 +1,58 @@
+
+/* The text of everything on the page */
+p {
+    font-family: Poppins, Ayuthaya;
+    font-size: 17px;
+}
+
+
+.navbar-header .navbar-brand {
+    color: white;
+}
+
+#footer {
+    background-color: indigo;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    font-style: italic;
+}
+
+#about {
+    font-family: Poppins;
+}
+
+
+footer {
+    text-align: center;
+}
+
+
+/* Style for the link. */
+a:link {
+    color: blue;
+}
+
+a:visited {
+    color:purple;
+}
+
+a:hover {
+    color: red;
+}
+
+a:active {
+    color: gray;
+}
+
+.navbar {
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+    overflow: hidden;
+}
+
+#table {
+    font-family: Poppins;
+    font-size: 16px;
+}
