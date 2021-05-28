@@ -7,7 +7,7 @@ p {
 
 
 .navbar-header .navbar-brand {
-    color: white;
+    color: black;
 }
 
 #footer {
@@ -59,4 +59,7 @@ a:active {
 .column {
     float: left;
     padding: 35px;
+}
+#navlinks {
+    font-size: 18px;
 }

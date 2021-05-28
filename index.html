@@ -21,18 +21,26 @@
 
 
 <!-- Navbar components and elements. -->
-<nav class="navbar navbar-inverse w3-top">
+<nav class="navbar navbar-default w3-top">
     <div class="container-fluid">
-        <div class="navbar-header">
-            <h3><font color="white">Philip Gouldman</font></h3>
+        <div class="navbar-header navbar-brand">
+            <a class="navbar-header navbar-brand nav-link js-scroll-trigger" href="#">Philip Gouldman</a>
         </div>
+        <div id="navlinks">
+            <ul class="nav navbar-nav w3-center">
+                <li class="nav-item"><a href="#about">About</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#programing_background">Computer & Tech</a></li>
+                <li class="nav-item"><a href="#projects">Projects</a></li>
+            </ul>
+        </div>
+
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav w3-right">
                 <!-- Github and Linked in links here -->
                 <li><a href="https://www.github.com/thunderd568"><span class="fab fa-github fa-2x"></span>
-                    <font color="white" size="4px">GitHub</font></a></li>
+                    <font color="black" size="4px">GitHub</font></a></li>
                 <li><a href="https://www.linkedin.com/in/philip-gouldman-24724b84/"><span class="fab fa-linkedin fa-2x"></span>
-                    <font color="white" size="4px">LinkedIn</font></a></li>
+                    <font color="black" size="4px">LinkedIn</font></a></li>
             </ul>
         </div>
     </div>
@@ -50,21 +58,18 @@
 -->
 <br>
 <br>
-<br>
-<br>
 <div id="mainPage" class="w3-content">
-
     <div class="row">
-        <div class="col-lg-7 col-xl-7">
-            <h1 style="font-family: Poppins">Welcome!</h1>
-        </div>
+        <div class="column"></div>
+        <div class="column"></div>
+        <div class="column"></div>
+        <div class="column"></div>
+        <div class="column"></div>
+        <div class="column"></div>
+        <div class="column"></div>
+        <div class="column"></div>
         <div class="col-lg-5 col-xl-5">
-            <div class="column">
-                <img src="pictures/seal.png" height="120" width="120">
-            </div>
-            <div class="column">
-                <img src="pictures/CompTIA_Security_2Bce.png" height="130" width="130"/>
-            </div>
+
         </div>
     </div>
     <div class="row">
@@ -75,6 +80,14 @@
         <!--- About me section --->
         <div id="about" class="col-xs-3 col-sm-3 col-md-3 col-lg-6 col-xl-6">
             <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">About Me</h3>
+            <div class="column">
+                <!--Maryland Seal-->
+                <img src="pictures/seal.png" height="150" width="150">
+            </div>
+            <div class="column">
+                <!--CompTIA badge-->
+                <img src="pictures/CompTIA_Security_2Bce.png" height="150" width="150"/>
+            </div>
             <!--- Details --->
             <p>Born, raised and currently live in the Washington D.C. metropolitan area.</p>
 
@@ -120,7 +133,6 @@
             <h2 class="w3-border-bottom w3-border-light-grey w3-padding-16">Computer and Technical Background</h2>
 
             <h3 class="w3-padding-16"><em>Certifications</em></h3>
-            <p>I currently hold a Security+ Certification issued by CompTIA</p>
             <!--Code from Credly.com to show my Certification badge-->
             <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="21cbb42d-3738-4ad1-ae19-2b6fd531b950" data-share-badge-host="https://www.credly.com"></div>
             <script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
