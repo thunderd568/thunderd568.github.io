@@ -29,20 +29,17 @@ footer {
 
 
 /* Style for the link. */
+a {
+    color: white;
+    font-weight: bold;
+}
 a:link {
     color: blue;
+    font-size: 22px;
 }
 
 a:visited {
     color:purple;
-}
-
-a:hover {
-    color: red;
-}
-
-a:active {
-    color: gray;
 }
 
 .navbar {
@@ -60,6 +57,11 @@ a:active {
     float: left;
     padding: 35px;
 }
-#navlinks {
-    font-size: 18px;
+
+#nav-links a:not(:first-of-type) {
+    border-left: solid 1px black;
+}
+.wrapper2 {
+    grid-template-columns: 50% 50%;
+    display: grid;
 }
