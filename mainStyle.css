@@ -4,7 +4,27 @@ p {
     font-family: Poppins, Ayuthaya;
     font-size: 17px;
 }
+.column {
+    float: left; /* Float the columns to enable alignment */
+    width: 20%; /* Adjust this width as needed */
+    padding: 5px; /* Add padding between columns */
+    box-sizing: border-box; /* Include padding in the width */
+}
 
+/* Clear floats after the columns */
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Make images responsive */
+img {
+    max-width: 100%; /* Ensure images don't exceed their container width */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove extra space below images */
+    margin: auto; /* Center images horizontally */
+}
 
 .navbar-header .navbar-brand {
     color: black;
