@@ -76,7 +76,7 @@ a:visited {
 /* Style each certification item */
 .certification-item {
     flex: 0 0 20%; /* Set initial flex basis to 20% (5 items per row) */
-    padding: 1px; /* Add padding between items */
+    padding: 5px; /* Add padding between items */
     box-sizing: border-box; /* Include padding in the width */
     text-align: center; /* Center content horizontally */
 }
