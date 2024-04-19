@@ -64,3 +64,27 @@ a:visited {
     grid-template-columns: 50% 50%;
     display: grid;
 }
+
+/* Styling for the certification images and badges. */
+.certifications {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    justify-content: center; /* Align items horizontally */
+    align-items: center; /* Align items vertically */
+}
+
+/* Style each certification item */
+.certification-item {
+    flex: 0 0 20%; /* Set initial flex basis to 20% (5 items per row) */
+    padding: 1px; /* Add padding between items */
+    box-sizing: border-box; /* Include padding in the width */
+    text-align: center; /* Center content horizontally */
+}
+
+/* Make images responsive */
+.certification-item img {
+    max-width: 100%; /* Ensure images don't exceed their container width */
+    height: 100px; /* Maintain aspect ratio */
+    display: block; /* Remove extra space below images */
+    margin: auto; /* Center images horizontally */
+}
