@@ -574,10 +574,10 @@
 
         .skill-row {
             display: grid;
-            grid-template-columns: 120px 1fr auto;
+            grid-template-columns: 150px 1fr auto;
             align-items: center;
-            gap: 16px;
-            padding: 14px 0;
+            gap: 20px;
+            padding: 18px 0;
             border-bottom: 1px solid var(--border);
         }
 
@@ -585,14 +585,14 @@
 
         .skill-name {
             font-family: 'DM Mono', monospace;
-            font-size: 13px;
+            font-size: 16px;
             color: var(--text);
         }
 
         .skill-bar-wrap {
-            height: 4px;
+            height: 7px;
             background: var(--surface2);
-            border-radius: 2px;
+            border-radius: 4px;
             overflow: hidden;
         }
 
@@ -600,18 +600,17 @@
             height: 100%;
             background: linear-gradient(90deg, var(--accent), var(--accent2));
             border-radius: 2px;
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 0%;
+            transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .skill-bar-inner.animated { transform: scaleX(1); }
+        .skill-bar-inner.animated { width: var(--w); }
 
         .skill-pct {
             font-family: 'DM Mono', monospace;
-            font-size: 11px;
+            font-size: 15px;
             color: var(--muted);
-            min-width: 28px;
+            min-width: 36px;
             text-align: right;
         }
 
@@ -1041,47 +1040,47 @@
                 <div id="skill-bars">
                     <div class="skill-row fade-up">
                         <span class="skill-name">Apex (SF)</span>
-                        <div class="skill-bar-wrap"><div class="skill-bar-inner" style="--w:1.0"></div></div>
+                        <div class="skill-bar-wrap"><div class="skill-bar-inner" style="--w:100%"></div></div>
                         <span class="skill-pct">100%</span>
                     </div>
                     <div class="skill-row fade-up">
                         <span class="skill-name">Java</span>
-                        <div class="skill-bar-wrap"><div class="skill-bar-inner" style="--w:0.90"></div></div>
+                        <div class="skill-bar-wrap"><div class="skill-bar-inner" style="--w:90%"></div></div>
                         <span class="skill-pct">90%</span>
                     </div>
                     <div class="skill-row fade-up">
                         <span class="skill-name">JavaScript</span>
-                        <div class="skill-bar-wrap"><div class="skill-bar-inner" style="--w:0.75"></div></div>
+                        <div class="skill-bar-wrap"><div class="skill-bar-inner" style="--w:75%"></div></div>
                         <span class="skill-pct">75%</span>
                     </div>
                     <div class="skill-row fade-up">
                         <span class="skill-name">Python</span>
-                        <div class="skill-bar-wrap"><div class="skill-bar-inner" style="--w:0.80"></div></div>
+                        <div class="skill-bar-wrap"><div class="skill-bar-inner" style="--w:80%"></div></div>
                         <span class="skill-pct">80%</span>
                     </div>
                     <div class="skill-row fade-up">
                         <span class="skill-name">HTML / CSS</span>
-                        <div class="skill-bar-wrap"><div class="skill-bar-inner" style="--w:0.80"></div></div>
+                        <div class="skill-bar-wrap"><div class="skill-bar-inner" style="--w:80%"></div></div>
                         <span class="skill-pct">80%</span>
                     </div>
                     <div class="skill-row fade-up">
                         <span class="skill-name">C#</span>
-                        <div class="skill-bar-wrap"><div class="skill-bar-inner" style="--w:0.75"></div></div>
+                        <div class="skill-bar-wrap"><div class="skill-bar-inner" style="--w:75%"></div></div>
                         <span class="skill-pct">75%</span>
                     </div>
                     <div class="skill-row fade-up">
                         <span class="skill-name">C</span>
-                        <div class="skill-bar-wrap"><div class="skill-bar-inner" style="--w:0.70"></div></div>
+                        <div class="skill-bar-wrap"><div class="skill-bar-inner" style="--w:70%"></div></div>
                         <span class="skill-pct">70%</span>
                     </div>
                     <div class="skill-row fade-up">
                         <span class="skill-name">Ruby</span>
-                        <div class="skill-bar-wrap"><div class="skill-bar-inner" style="--w:0.60"></div></div>
+                        <div class="skill-bar-wrap"><div class="skill-bar-inner" style="--w:60%"></div></div>
                         <span class="skill-pct">60%</span>
                     </div>
                     <div class="skill-row fade-up">
                         <span class="skill-name">SQL</span>
-                        <div class="skill-bar-wrap"><div class="skill-bar-inner" style="--w:0.50"></div></div>
+                        <div class="skill-bar-wrap"><div class="skill-bar-inner" style="--w:50%"></div></div>
                         <span class="skill-pct">50%</span>
                     </div>
                 </div>
