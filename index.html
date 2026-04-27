@@ -1,360 +1,1281 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Philip Gouldmans Web Page" />
-    <meta name="keywords" content="HTML5, Responsive"/>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet' />
-    <link href="bootstrap/css/bootstrap.min.css" rel = "stylesheet" />
-    <link rel="stylesheet" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./mainStyle.css" />
-    <link rel="stylesheet" href="./font-awesome.min.css"/>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-
-
+    <meta name="description" content="Philip Gouldman — Senior Consultant & Software Engineer" />
     <title>Philip Gouldman</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" crossorigin="anonymous">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg: #0d0f13;
+            --surface: #13161d;
+            --surface2: #1a1e28;
+            --border: #252a37;
+            --accent: #00e5b0;
+            --accent2: #0087ff;
+            --accent-dim: rgba(0,229,176,0.12);
+            --text: #e8eaf0;
+            --muted: #7a8096;
+            --muted2: #4a5068;
+            --white: #ffffff;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* ── NOISE TEXTURE OVERLAY ── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.4;
+        }
+
+        /* ── SCROLLBAR ── */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+        /* ── NAVBAR ── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            height: 64px;
+            background: rgba(13,15,19,0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .nav-brand {
+            font-family: 'Fraunces', serif;
+            font-weight: 800;
+            font-size: 18px;
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-brand::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 12px var(--accent);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 36px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: 'DM Mono', monospace;
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--muted);
+            text-decoration: none;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent);
+            transition: width 0.25s ease;
+        }
+
+        .nav-links a:hover { color: var(--accent); }
+        .nav-links a:hover::after { width: 100%; }
+
+        .nav-social {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .nav-social a {
+            color: var(--muted);
+            font-size: 16px;
+            text-decoration: none;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+
+        .nav-social a:hover { color: var(--accent); transform: translateY(-2px); }
+
+        /* ── HERO ── */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 48px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-grid-bg {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(var(--border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 64px 64px;
+            mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+            opacity: 0.35;
+        }
+
+        .hero-glow {
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(0,229,176,0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-glow2 {
+            position: absolute;
+            bottom: -300px;
+            left: -100px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0,135,255,0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 420px;
+            gap: 80px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-tag {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .hero-tag::before {
+            content: '';
+            display: block;
+            width: 32px;
+            height: 1px;
+            background: var(--accent);
+        }
+
+        h1 {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(48px, 7vw, 88px);
+            font-weight: 800;
+            line-height: 1.0;
+            color: var(--white);
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        h1 .accent-text {
+            color: var(--accent);
+            display: block;
+        }
+
+        .hero-description {
+            font-size: 17px;
+            color: var(--muted);
+            line-height: 1.75;
+            max-width: 520px;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            background: var(--accent);
+            color: #0d0f13;
+            font-family: 'DM Mono', monospace;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.25s ease;
+            border: 1px solid var(--accent);
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--accent);
+            box-shadow: 0 0 20px rgba(0,229,176,0.2);
+        }
+
+        .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            background: transparent;
+            color: var(--text);
+            font-family: 'DM Mono', monospace;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            transition: all 0.25s ease;
+        }
+
+        .btn-ghost:hover {
+            border-color: var(--muted2);
+            color: var(--white);
+            background: var(--surface2);
+        }
+
+        /* ── HERO PHOTO CARD ── */
+        .hero-photo-wrap {
+            position: relative;
+        }
+
+        .hero-photo-card {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .hero-photo-card img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+            filter: grayscale(15%);
+            transition: filter 0.4s ease;
+        }
+
+        .hero-photo-card:hover img { filter: grayscale(0%); }
+
+        .hero-photo-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 50%, rgba(13,15,19,0.8) 100%);
+        }
+
+        .hero-photo-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 24px;
+            z-index: 1;
+        }
+
+        .hero-photo-name {
+            font-family: 'Fraunces', serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 4px;
+        }
+
+        .hero-photo-role {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .hero-corner-deco {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            width: 80px;
+            height: 80px;
+            border-top: 2px solid var(--accent);
+            border-right: 2px solid var(--accent);
+            border-radius: 0 8px 0 0;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .stat-chip {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 14px 18px;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .stat-num {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: var(--muted);
+            font-family: 'DM Sans', sans-serif;
+            letter-spacing: 0.05em;
+            margin-top: 2px;
+        }
+
+        /* ── SECTIONS COMMON ── */
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 48px;
+        }
+
+        .section-header {
+            margin-bottom: 64px;
+        }
+
+        .section-tag {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-tag::before {
+            content: '';
+            display: block;
+            width: 24px;
+            height: 1px;
+            background: var(--accent);
+        }
+
+        h2 {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 800;
+            color: var(--white);
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        /* ── DIVIDER ── */
+        .section-divider {
+            width: 100%;
+            height: 1px;
+            background: var(--border);
+            margin: 0;
+        }
+
+        /* ── ABOUT ── */
+        #about-section {
+            border-top: none;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .about-text p {
+            font-size: 16px;
+            color: var(--muted);
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .about-text p strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .about-text a {
+            color: var(--accent);
+            text-decoration: none;
+            font-family: 'DM Mono', monospace;
+            font-size: 14px;
+        }
+
+        .about-text a:hover { text-decoration: underline; }
+
+        .interest-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 24px;
+        }
+
+        .tag {
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            color: var(--muted);
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            padding: 6px 14px;
+            border-radius: 100px;
+            letter-spacing: 0.05em;
+            transition: all 0.2s ease;
+        }
+
+        .tag:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--accent-dim);
+        }
+
+        .badges-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .badge-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.25s ease;
+            text-align: center;
+        }
+
+        .badge-card:hover {
+            border-color: var(--accent);
+            background: var(--surface2);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(0,229,176,0.08);
+        }
+
+        .badge-card img {
+            width: 64px;
+            height: 64px;
+            object-fit: contain;
+        }
+
+        .badge-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            color: var(--muted);
+            letter-spacing: 0.05em;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        /* ── SKILLS ── */
+        #skills-section {
+            background: var(--surface);
+            max-width: 100%;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        #skills-section .inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 48px;
+        }
+
+        .skills-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .skill-row {
+            display: grid;
+            grid-template-columns: 120px 1fr auto;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .skill-row:last-child { border-bottom: none; }
+
+        .skill-name {
+            font-family: 'DM Mono', monospace;
+            font-size: 13px;
+            color: var(--text);
+        }
+
+        .skill-bar-wrap {
+            height: 4px;
+            background: var(--surface2);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .skill-bar-inner {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            border-radius: 2px;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .skill-bar-inner.animated { transform: scaleX(1); }
+
+        .skill-pct {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: var(--muted);
+            min-width: 28px;
+            text-align: right;
+        }
+
+        .tools-section h3 { margin-bottom: 24px; }
+
+        .tools-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tool-chip {
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-family: 'DM Mono', monospace;
+            font-size: 12px;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .tool-chip:hover {
+            border-color: var(--accent2);
+            color: var(--accent2);
+            background: rgba(0,135,255,0.08);
+        }
+
+        /* ── PROJECTS ── */
+        #projects-section {
+            border-top: none;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 24px;
+        }
+
+        .project-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-6px);
+            box-shadow: 0 24px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(0,229,176,0.1);
+        }
+
+        .project-video-wrap {
+            position: relative;
+            background: var(--bg);
+            aspect-ratio: 16/9;
+            overflow: hidden;
+        }
+
+        .project-video-wrap iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            pointer-events: none;
+        }
+
+        .project-video-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(13,15,19,0.6);
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .project-video-overlay:hover { background: rgba(13,15,19,0.3); }
+
+        .play-btn {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--bg);
+            font-size: 18px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .project-video-overlay:hover .play-btn {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(0,229,176,0.4);
+        }
+
+        .project-body {
+            padding: 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-num {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: var(--muted2);
+            margin-bottom: 8px;
+            letter-spacing: 0.1em;
+        }
+
+        .project-title {
+            font-family: 'Fraunces', serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 12px;
+        }
+
+        .project-desc {
+            font-size: 14px;
+            color: var(--muted);
+            line-height: 1.7;
+            flex: 1;
+            font-weight: 300;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 20px;
+        }
+
+        .tech-tag {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            color: var(--accent);
+            background: var(--accent-dim);
+            border: 1px solid rgba(0,229,176,0.2);
+            padding: 4px 10px;
+            border-radius: 4px;
+            letter-spacing: 0.05em;
+        }
+
+        .project-watch-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 20px;
+            color: var(--accent);
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            text-decoration: none;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: gap 0.2s ease;
+        }
+
+        .project-watch-btn:hover { gap: 14px; }
+
+        /* ── FOOTER ── */
+        footer {
+            border-top: 1px solid var(--border);
+            background: var(--surface);
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .footer-brand {
+            font-family: 'Fraunces', serif;
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--white);
+        }
+
+        .footer-copy {
+            font-family: 'DM Mono', monospace;
+            font-size: 12px;
+            color: var(--muted2);
+            margin-top: 6px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 16px;
+        }
+
+        .footer-social a {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--surface2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--muted);
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .footer-social a:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--accent-dim);
+        }
+
+        /* ── SCROLL ANIMATIONS ── */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-up:nth-child(2) { transition-delay: 0.1s; }
+        .fade-up:nth-child(3) { transition-delay: 0.2s; }
+        .fade-up:nth-child(4) { transition-delay: 0.3s; }
+
+        /* ── CURSOR GLOW (desktop) ── */
+        .cursor-glow {
+            pointer-events: none;
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0,229,176,0.04) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            transition: left 0.15s ease, top 0.15s ease;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 900px) {
+            nav { padding: 0 24px; }
+            .nav-links { display: none; }
+            #hero { padding: 100px 24px 60px; }
+            .hero-content { grid-template-columns: 1fr; gap: 48px; }
+            .hero-photo-wrap { order: -1; }
+            .hero-photo-card img { height: 320px; }
+            section { padding: 70px 24px; }
+            #skills-section .inner { padding: 70px 24px; }
+            .about-grid { grid-template-columns: 1fr; gap: 48px; }
+            .skills-layout { grid-template-columns: 1fr; gap: 48px; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .footer-inner { flex-direction: column; gap: 32px; text-align: center; }
+            h1 { font-size: 48px; }
+        }
+    </style>
 </head>
 <body>
 
+<!-- Cursor glow -->
+<div class="cursor-glow" id="cursorGlow"></div>
 
-<!-- Navbar components and elements. -->
-<nav class="navbar navbar-default w3-top">
-    <div class="container-fluid">
-        <div class="navbar-header navbar-brand">
-            <a class="navbar-header navbar-brand nav-link js-scroll-trigger" href="#">Philip Gouldman</a>
-        </div>
-        <div id="nav-links">
-            <ul class="nav navbar-nav w3-center" style="padding-top: 15px">
-                <li class="nav-item"><a href="#about">About</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#programing_background">Computer & Tech</a></li>
-                <li class="nav-item"><a href="#projects">Projects</a></li>
-            </ul>
-        </div>
-
-        <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav w3-right">
-                <!-- Github and Linked in links here -->
-                <li><a href="https://www.github.com/thunderd568"><span class="fab fa-github fa-2x"></span>
-                    GitHub
-                </a></li>
-                <li><a href="https://www.linkedin.com/in/philip-gouldman-59853a338/"><span class="fab fa-linkedin fa-2x"></span>
-                    LinkedIn
-                </a></li>
-            </ul>
-        </div>
+<!-- ── NAVBAR ── -->
+<nav>
+    <a href="#" class="nav-brand">Philip Gouldman</a>
+    <ul class="nav-links">
+        <li><a href="#about-section">About</a></li>
+        <li><a href="#skills-section">Skills</a></li>
+        <li><a href="#projects-section">Projects</a></li>
+        <li><a href="mailto:philipgouldman@gmail.com">Contact</a></li>
+    </ul>
+    <div class="nav-social">
+        <a href="https://www.github.com/thunderd568" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/philip-gouldman-59853a338/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/thunderd568/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
     </div>
-
 </nav>
-<!--- Cover photo cool! Has to be included in the nav tag to prevent the ugly white space in between
-<div id="cover-photo">
-    <header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="cover_img">
-       <img class="w3-image" src="pictures/computer_science_cover_letter_01.jpg" style="width:100%">
-        <div class="w3-display-middle w3-margin-top w3-center">
-            <h1 class="w3-xxxlarge w3-text-white" style="text-shadow: black 4px 4px"><span><b>Hello World!</b></span> <span class="w3-hide-small w3-text-light-grey"></span></h1>
-        </div>
-    </header>
-</div>
--->
-<br>
-<br>
-<div id="mainPage" class="w3-content">
-    <div class="row">
-        <div class="column"></div>
-        <div class="column"></div>
-        <div class="column"></div>
-        <div class="column"></div>
-        <div class="column"></div>
-        <div class="column"></div>
-        <div class="column"></div>
-        <div class="column"></div>
-        <div class="col-lg-5 col-xl-5">
-        </div>
-    </div>
-    <div class="row">
-        <div id="myPicture" class="col-xs-3 col-sm-3 col-md-3 col-lg-6 col-xl-6">
-            <img class="img-rounded" src="pictures/thumbnail_IMG_7063%20(1).jpg" width="420" height="560">
-        </div>
-        <!--- About me section --->
-        <div id="about" class="col-xs-3 col-sm-3 col-md-3 col-lg-6 col-xl-6">
-            <h3 class="w3-border-bottom w3-border-light-grey w3-padding-10">About Me</h3>
-            <div class="column">
-                <!--Maryland Seal-->
-                <img src="pictures/seal.png" height="150" width="150">
+
+<!-- ── HERO ── -->
+<section id="hero" style="max-width:100%; padding-top:0; padding-bottom:0;">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-glow2"></div>
+    <div class="hero-content">
+        <div class="hero-text">
+            <div class="hero-tag">Senior Consultant · Booz Allen Hamilton</div>
+            <h1>
+                Philip
+                <span class="accent-text">Gouldman.</span>
+            </h1>
+            <p class="hero-description">
+                Software engineer & Salesforce specialist based in the D.C. metro area. 
+                9+ years turning complex problems into clean, scalable solutions — 
+                across government consulting, full-stack development, and cybersecurity.
+            </p>
+            <div class="hero-ctas">
+                <a href="./documents/Resume Ver2.pdf" class="btn-primary">
+                    <i class="fas fa-download"></i> Download Résumé
+                </a>
+                <a href="#projects-section" class="btn-ghost">
+                    View Projects <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
-            <div class="column">
-                <!--CompTIA badge-->
-                <img src="pictures/CompTIA_Security_2Bce.png" height="150" width="150"/>
+        </div>
+
+        <div class="hero-photo-wrap">
+            <div class="hero-photo-card">
+                <img src="pictures/thumbnail_IMG_7063%20(1).jpg" alt="Philip Gouldman" />
+                <div class="hero-photo-info">
+                    <div class="hero-photo-name">Philip Gouldman</div>
+                    <div class="hero-photo-role">UMD CS Alumni · CompTIA Security+</div>
+                </div>
             </div>
-
-            <!--- Details --->
-            <p>A native of the Washington D.C. metropolitan area, I have cultivated my passion for technology into a successful career trajectory. Graduating with a Bachelor of Science in Computer Science from the esteemed University of Maryland College Park, I embarked on a journey that has seen me excel as a Senior Consultant at Booz Allen Hamilton.</p>
-
-            <p>Within my role, I have honed my expertise as a software developer, specializing in Salesforce Development. With nine years of dedicated coding experience under my belt, I remain committed to perpetual learning, constantly seeking to deepen my understanding of the evolving technological landscape.</p>
-
-            <p>Beyond my professional pursuits, I am a multifaceted individual with diverse interests. An accomplished guitar player, culinary enthusiast, and aficionado of anime and comic books, I am fueled by a boundless curiosity and a desire to explore the world. Driven by an unwavering passion for technology, I am steadfast in my commitment to delivering exceptional results in the domains of Software Engineering, Application Development, Cybersecurity, and IT.</p>
-
-            <p>Email: <a href="mailto:philipgouldman@gmail.com">philipgouldman@gmail.com</a></p>
-            <br>
-            <br>
-            <!--- Button link to Resume and other important docs --->
-            <div id="button-links">
-                <a href="./documents/Resume Ver2.pdf">
-                    <button type="button" class="btn btn-primary btn-lg">My Resume</button>
-                </a>
-                <a href="https://www.instagram.com/thunderd568/">
-                    <button type="button" class="btn-primary btn btn-lg"><span class="fab fa-instagram fa-lg"></span> Instagram</button>
-                </a>
-                <a href="https://www.facebook.com/philip.gouldman">
-                    <button type="button" class="btn btn-primary btn-lg"><span class="fab fa-facebook fa-lg"></span> Facebook</button>
-                </a>
+            <div class="hero-corner-deco"></div>
+            <div class="hero-stats">
+                <div class="stat-chip">
+                    <div class="stat-num">9+</div>
+                    <div class="stat-label">Years coding</div>
+                </div>
+                <div class="stat-chip">
+                    <div class="stat-num">11+</div>
+                    <div class="stat-label">Certifications</div>
+                </div>
+                <div class="stat-chip">
+                    <div class="stat-num">20+</div>
+                    <div class="stat-label">Languages</div>
+                </div>
+                <div class="stat-chip">
+                    <div class="stat-num">DC</div>
+                    <div class="stat-label">Metro area</div>
+                </div>
             </div>
         </div>
     </div>
+</section>
 
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+<div class="section-divider"></div>
 
-    <!--- Programming languages and technical knowledge information --->
-    <section id="one">
-        <div id="programing_background">
-            <h2 class="w3-border-bottom w3-border-light-grey w3-padding-16">Computer and Technical Background</h2>
-    
-            <h3 class="w3-padding-16"><em>Certifications</em></h3>
-            <!-- Container for certifications using flexbox -->
-            <div class="certifications">
-                <div class="certification-item">
-                    <img src="pictures/2021-03_Badge_SF-Certified_Platform-Developer-I_500x490px.png" height="100" width="100" alt="Certification 1"/>
+<!-- ── ABOUT ── -->
+<section id="about-section">
+    <div class="section-header">
+        <div class="section-tag">Background</div>
+        <h2>About Me</h2>
+    </div>
+    <div class="about-grid">
+        <div class="about-text fade-up">
+            <p>A native of the <strong>Washington D.C. metropolitan area</strong>, I've cultivated a passion for technology into a successful career as a <strong>Senior Consultant at Booz Allen Hamilton</strong>, where I specialize in Salesforce development and enterprise software engineering.</p>
+            <p>I hold a <strong>Bachelor of Science in Computer Science</strong> from the University of Maryland College Park, and I've spent nearly a decade building robust, scalable software solutions across government and commercial sectors.</p>
+            <p>Beyond the terminal, I'm an accomplished guitar player, culinary enthusiast, and anime & comic book aficionado. I believe great engineers bring broad curiosity to narrow problems.</p>
+            <p>
+                <i class="fas fa-envelope" style="color:var(--accent); margin-right:8px;"></i>
+                <a href="mailto:philipgouldman@gmail.com">philipgouldman@gmail.com</a>
+            </p>
+            <div class="interest-tags" style="margin-top:28px;">
+                <span class="tag">🎸 Guitar</span>
+                <span class="tag">🍳 Culinary</span>
+                <span class="tag">🎌 Anime</span>
+                <span class="tag">📚 Comic Books</span>
+                <span class="tag">🔐 Cybersecurity</span>
+                <span class="tag">☁️ Cloud</span>
+                <span class="tag">🤖 AI / ML</span>
+            </div>
+        </div>
+
+        <div class="fade-up">
+            <h3 style="margin-bottom:24px; color:var(--muted); font-size:14px; font-family:'DM Mono',monospace; font-weight:400; letter-spacing:0.08em; text-transform:uppercase;">Certifications</h3>
+            <div class="badges-grid">
+                <div class="badge-card">
+                    <img src="pictures/2021-03_Badge_SF-Certified_Platform-Developer-I_500x490px.png" alt="SF Platform Developer I" />
+                    <div class="badge-label">SF Platform<br>Developer I</div>
                 </div>
-                <div class="certification-item">
-                    <img src="pictures/2021-03_Badge_SF-Certified_Administrator_500x490px.png" height="100" width="100" alt="Certification 2"/>
+                <div class="badge-card">
+                    <img src="pictures/2021-03_Badge_SF-Certified_Administrator_500x490px.png" alt="SF Administrator" />
+                    <div class="badge-label">SF<br>Administrator</div>
                 </div>
-                <div class="certification-item">
-                    <img src="pictures/2021-03_Badge_SF-Certified_Platform-App-Builder_500x490px.png" height="100" width="100" alt="Certification 3"/>
+                <div class="badge-card">
+                    <img src="pictures/2021-03_Badge_SF-Certified_Platform-App-Builder_500x490px.png" alt="SF App Builder" />
+                    <div class="badge-label">SF Platform<br>App Builder</div>
                 </div>
-                <div class="certification-item">
-                    <img src="pictures/2021-03_Badge_SF-Certified_JavaScript-Developer-I_500x490px.png" height="100" width="100" alt="Certification 4"/>
+                <div class="badge-card">
+                    <img src="pictures/2021-03_Badge_SF-Certified_JavaScript-Developer-I_500x490px.png" alt="SF JavaScript Dev I" />
+                    <div class="badge-label">SF JavaScript<br>Developer I</div>
                 </div>
-                <div class="certification-item">
-                    <img src="pictures/2021-11_Badge_SF-Certified_Sharing-and-Visibility-Architect_500x490px.png" height="100" width="100" alt="Certification 5"/>
+                <div class="badge-card">
+                    <img src="pictures/2021-11_Badge_SF-Certified_Sharing-and-Visibility-Architect_500x490px.png" alt="SF Architect" />
+                    <div class="badge-label">Sharing &amp;<br>Visibility Architect</div>
                 </div>
-                <!--Code from Credly.com to show my Certification badges-->
-                <div class="certification-item" 
-                    data-iframe-width="100" 
-                    data-iframe-height="200" 
-                    data-share-badge-id="21cbb42d-3738-4ad1-ae19-2b6fd531b950" 
-                    data-share-badge-host="https://www.credly.com">
+                <div class="badge-card">
+                    <img src="pictures/CompTIA_Security_2Bce.png" alt="CompTIA Security+" />
+                    <div class="badge-label">CompTIA<br>Security+</div>
                 </div>
-                <!--Python Credly Badge from BAH -->
-                <div class="certification-item" 
-                        data-iframe-width="100" 
-                        data-iframe-height="200" 
-                        data-share-badge-id="6e6db152-48ef-4354-8de5-4cc538329591" 
-                        data-share-badge-host="https://www.credly.com">
-                </div>
-                <!-- Booz Allen AI Badges -->
-                <div class="certification-item" 
-                        data-iframe-width="100" 
-                        data-iframe-height="200" 
-                        data-share-badge-id="4b8e6cb2-64f5-4305-8a31-154b864c8a78" 
-                        data-share-badge-host="https://www.credly.com">
-                </div>
-                <div class="certification-item" 
-                        data-iframe-width="100" 
-                        data-iframe-height="200" 
-                        data-share-badge-id="a63d4d3f-8510-4fdf-affd-4ea1052bf7c4" 
-                        data-share-badge-host="https://www.credly.com">
-                </div>
-                <!--JavaScript Booz Allen Badge-->
-                <div class="certification-item" 
-                    data-iframe-width="100" 
-                    data-iframe-height="200" 
-                    data-share-badge-id="47c79cbd-cdf2-4a30-a2a5-ffaf65f64dce" 
-                    data-share-badge-host="https://www.credly.com">
-                </div>
-                <!--Booz Allen Java Foundational Badge-->
-                <div data-iframe-width="100" 
-                    data-iframe-height="200" 
-                    data-share-badge-id="ae6fa455-c5ee-46e6-991f-a231177a9c56" 
-                    data-share-badge-host="https://www.credly.com">
-                </div>
-                <!-- Include the Credly script only once -->
+                <!-- Credly / Booz Allen badges -->
+                <div class="badge-card" data-iframe-width="100" data-iframe-height="200" data-share-badge-id="21cbb42d-3738-4ad1-ae19-2b6fd531b950" data-share-badge-host="https://www.credly.com"></div>
+                <div class="badge-card" data-iframe-width="100" data-iframe-height="200" data-share-badge-id="6e6db152-48ef-4354-8de5-4cc538329591" data-share-badge-host="https://www.credly.com"></div>
+                <div class="badge-card" data-iframe-width="100" data-iframe-height="200" data-share-badge-id="4b8e6cb2-64f5-4305-8a31-154b864c8a78" data-share-badge-host="https://www.credly.com"></div>
+                <div class="badge-card" data-iframe-width="100" data-iframe-height="200" data-share-badge-id="a63d4d3f-8510-4fdf-affd-4ea1052bf7c4" data-share-badge-host="https://www.credly.com"></div>
+                <div class="badge-card" data-iframe-width="100" data-iframe-height="200" data-share-badge-id="47c79cbd-cdf2-4a30-a2a5-ffaf65f64dce" data-share-badge-host="https://www.credly.com"></div>
+                <div class="badge-card" data-iframe-width="100" data-iframe-height="200" data-share-badge-id="ae6fa455-c5ee-46e6-991f-a231177a9c56" data-share-badge-host="https://www.credly.com"></div>
                 <script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
             </div>
-
-            <h3 class= "w3-padding-16"><em>Programming Languages</em></h3>
-            <img src="pictures/programingLanguages.png" class="center-block"/>
-            <p>I am proficient in Java, C, Ruby, HTML, CSS, PHP, Javascript, and Python. I am familiar with Ocaml,
-                C++, Prolog, SQL, Assembly (y86 and MIPS), MATLAB, LISP, Swift, Bash and C#.</p>
-
-            <!-- Progamming Language Table -->
-            <div id="table">
-                <table class="table table-bordered table-striped">
-                    <thead>
-                    <tr>
-                        <th>Language</th><th>Skill Level</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>Java</td><td><span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star-half"></span></td>
-                        </tr>
-                        <tr><td>C</td><td><span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star-half"></span></td></tr>
-                        <tr><td>Ruby</td><td><span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            </td></tr>
-                        <tr><td>HTML</td><td><span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span></td></tr>
-                        <tr><td>CSS</td><td><span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span></td></tr>
-                        <tr><td>PHP</td><td><span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            </td></tr>
-                        <tr><td>Javascript</td><td><span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star-half"></span></td></tr>
-                        <tr><td>Python</td><td><span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span></td></tr>
-                        <tr><td>Ocaml</td><td><span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            </td></tr>
-                        <tr><td>C++</td><td><span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            </td></tr>
-                        <tr><td>Prolog</td><td><span class="fa fa-star"></span>
-                            <span class="fa fa-star-half"></span>
-                            </td></tr>
-                        <tr><td>SQL</td><td><span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            </td></tr>
-                        <tr><td>Assembly (y86 and MIPS</td><td><span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            </td></tr>
-                        <tr><td>HTML</td><td><span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span></td></tr>
-                        <tr><td>MATLAB</td><td><span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            </td></tr>
-                        <tr><td>LISP</td><td><span class="fa fa-star"></span>
-                            </td></tr>
-                        <tr><td>Swift</td><td><span class="fa fa-star"></span>
-                            </td></tr>
-                        <tr><td>Bash</td><td><span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            </td></tr>
-                        <tr><td>C#</td><td><span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span><span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            </td></tr>
-                        <tr><td>Apex (Salesforce)</td><td><span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                        </td></tr>
-                    </tbody>
-                </table>
-            </div>
-            <h3 class="w3-padding-16"><em>Software and Environments</em></h3>
-            <p>Eclipse, EMACS, Xcode, JetBrains, Visual Studio
-                Sublime Text, Nano, VIM, gdb, Linux (Red hat flavor), Unix, Microsfot Office (Excel, Word, Powerpoint)
-                , Android Studio, Salesforce, Salesforce Lightning Web Components.
-            </p>
         </div>
-    </section>
-    <br>
-    <br>
-    <!--- Projects and coursework --->
-    <div id="projects">
-        <h2 class="w3-border-bottom w3-border-light-grey w3-padding-16">Projects and Related Course Work</h2>
-
-        <h3><i>Lost and Found Android Application</i></h3>
-        <p>Developed an application for Android platform that
-            allows users to search items reported as lost or found and post a new lost or found item report.
-            Designed with Google Firebase libraries. Watch the demo below!</p>
-
-        <!--- Video demo of the Lost and Found Android Application Project --->
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/PGhsxTOmPmY"
-                frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
-        <br>
-        <br>
-        <br>
-
-        <h3><i>Teaching Assistant Application Portal</i></h3>
-        <p>Designed a web application portal for students interested in
-            becoming teaching assistants in the CS Department at the University of Maryland. Project was designed with a
-            group of myself and two other students and was submitted to the University Web Masters in hopes of full
-            deployment online to be used regularly for upcoming semesters by the department. Video demo is
-            provided below!</p>
-
-        <!--- Embeded youtube video for Teaching Assistant Application Portal project --->
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/1hqT0V07hik"
-                frameborder="0"
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
-        <br>
-        <br>
-        <br>
-
-        <h3><i>Space Force: The game!</i></h3>
-
-        <p>For my final semester at UMD, I made a game for my final project in my Game Programming Class
-        Through this, I was able to learn game development using Unity game engine and learned a new langauge,
-        C#! With the help of two other extremely talented programmers and artists, we were able to implement
-        a whole new physics scheme that features the O'Neil Cylinder! The game has no real win or lose objective,
-        the player explores a space station that goes haywire and droids and robots have gone rogue and attack
-        them! The main objective is to showcase the new physics we were going for and allow the player to just have
-            fun exploring the station with nothing but their laser gun AND grapling hook! Video demo is provided below!</p>
-
-        <!-- Embeded youtube video for Unity Game project --->
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/S0BBw31RJLE" frameborder="0"
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen>
-
-        </iframe>
     </div>
+</section>
 
-<!--- Main Page divisor ends -->
+<div class="section-divider"></div>
+
+<!-- ── SKILLS ── -->
+<div id="skills-section">
+    <div class="inner">
+        <div class="section-header">
+            <div class="section-tag">Technical Profile</div>
+            <h2>Languages & Tools</h2>
+        </div>
+        <div class="skills-layout">
+            <div>
+                <h3 style="margin-bottom:28px; font-size:16px; color:var(--muted); font-family:'DM Mono',monospace; font-weight:400; letter-spacing:0.08em; text-transform:uppercase;">Proficiency</h3>
+                <div id="skill-bars">
+                    <div class="skill-row fade-up">
+                        <span class="skill-name">Apex (SF)</span>
+                        <div class="skill-bar-wrap"><div class="skill-bar-inner" style="--w:1.0"></div></div>
+                        <span class="skill-pct">100%</span>
+                    </div>
+                    <div class="skill-row fade-up">
+                        <span class="skill-name">Java</span>
+                        <div class="skill-bar-wrap"><div class="skill-bar-inner" style="--w:0.90"></div></div>
+                        <span class="skill-pct">90%</span>
+                    </div>
+                    <div class="skill-row fade-up">
+                        <span class="skill-name">JavaScript</span>
+                        <div class="skill-bar-wrap"><div class="skill-bar-inner" style="--w:0.75"></div></div>
+                        <span class="skill-pct">75%</span>
+                    </div>
+                    <div class="skill-row fade-up">
+                        <span class="skill-name">Python</span>
+                        <div class="skill-bar-wrap"><div class="skill-bar-inner" style="--w:0.80"></div></div>
+                        <span class="skill-pct">80%</span>
+                    </div>
+                    <div class="skill-row fade-up">
+                        <span class="skill-name">HTML / CSS</span>
+                        <div class="skill-bar-wrap"><div class="skill-bar-inner" style="--w:0.80"></div></div>
+                        <span class="skill-pct">80%</span>
+                    </div>
+                    <div class="skill-row fade-up">
+                        <span class="skill-name">C#</span>
+                        <div class="skill-bar-wrap"><div class="skill-bar-inner" style="--w:0.75"></div></div>
+                        <span class="skill-pct">75%</span>
+                    </div>
+                    <div class="skill-row fade-up">
+                        <span class="skill-name">C</span>
+                        <div class="skill-bar-wrap"><div class="skill-bar-inner" style="--w:0.70"></div></div>
+                        <span class="skill-pct">70%</span>
+                    </div>
+                    <div class="skill-row fade-up">
+                        <span class="skill-name">Ruby</span>
+                        <div class="skill-bar-wrap"><div class="skill-bar-inner" style="--w:0.60"></div></div>
+                        <span class="skill-pct">60%</span>
+                    </div>
+                    <div class="skill-row fade-up">
+                        <span class="skill-name">SQL</span>
+                        <div class="skill-bar-wrap"><div class="skill-bar-inner" style="--w:0.50"></div></div>
+                        <span class="skill-pct">50%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tools-section">
+                <h3 style="margin-bottom:28px; font-size:16px; color:var(--muted); font-family:'DM Mono',monospace; font-weight:400; letter-spacing:0.08em; text-transform:uppercase;">Environments & Tools</h3>
+                <div class="tools-grid">
+                    <span class="tool-chip">Salesforce LWC</span>
+                    <span class="tool-chip">Salesforce CRM</span>
+                    <span class="tool-chip">Unity</span>
+                    <span class="tool-chip">Android Studio</span>
+                    <span class="tool-chip">Firebase</span>
+                    <span class="tool-chip">JetBrains</span>
+                    <span class="tool-chip">VS Code</span>
+                    <span class="tool-chip">Eclipse</span>
+                    <span class="tool-chip">Xcode</span>
+                    <span class="tool-chip">Git</span>
+                    <span class="tool-chip">Linux (RHEL)</span>
+                    <span class="tool-chip">gdb</span>
+                    <span class="tool-chip">VIM / EMACS</span>
+                    <span class="tool-chip">MATLAB</span>
+                    <span class="tool-chip">Bash</span>
+                    <span class="tool-chip">MS Office</span>
+                </div>
+
+                <h3 style="margin:40px 0 20px; font-size:16px; color:var(--muted); font-family:'DM Mono',monospace; font-weight:400; letter-spacing:0.08em; text-transform:uppercase;">Also familiar with</h3>
+                <div class="tools-grid">
+                    <span class="tool-chip">OCaml</span>
+                    <span class="tool-chip">Prolog</span>
+                    <span class="tool-chip">LISP</span>
+                    <span class="tool-chip">Swift</span>
+                    <span class="tool-chip">Assembly (y86/MIPS)</span>
+                    <span class="tool-chip">C++</span>
+                    <span class="tool-chip">PHP</span>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-<script src="bootstrap/jquery-3.2.1.min.js"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
-</body>
-<br>
+<div class="section-divider"></div>
 
-<!--- Footer --->
+<!-- ── PROJECTS ── -->
+<section id="projects-section">
+    <div class="section-header">
+        <div class="section-tag">Portfolio</div>
+        <h2>Featured Projects</h2>
+    </div>
+    <div class="projects-grid">
+
+        <div class="project-card fade-up">
+            <div class="project-video-wrap">
+                <iframe src="https://www.youtube.com/embed/PGhsxTOmPmY" title="Lost and Found" allowfullscreen></iframe>
+                <div class="project-video-overlay" onclick="activateVideo(this)">
+                    <div class="play-btn"><i class="fas fa-play"></i></div>
+                </div>
+            </div>
+            <div class="project-body">
+                <div class="project-num">01 / Project</div>
+                <div class="project-title">Lost & Found Android App</div>
+                <p class="project-desc">A mobile application for Android that lets users search and report lost or found items. Designed with Google Firebase as the real-time backend database and authentication layer.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Android</span>
+                    <span class="tech-tag">Java</span>
+                    <span class="tech-tag">Firebase</span>
+                    <span class="tech-tag">Google APIs</span>
+                </div>
+                <a href="https://www.youtube.com/watch?v=PGhsxTOmPmY" class="project-watch-btn" target="_blank">
+                    Watch demo <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="project-card fade-up">
+            <div class="project-video-wrap">
+                <iframe src="https://www.youtube.com/embed/1hqT0V07hik" title="TA Portal" allowfullscreen></iframe>
+                <div class="project-video-overlay" onclick="activateVideo(this)">
+                    <div class="play-btn"><i class="fas fa-play"></i></div>
+                </div>
+            </div>
+            <div class="project-body">
+                <div class="project-num">02 / Project</div>
+                <div class="project-title">TA Application Portal</div>
+                <p class="project-desc">A web portal for UMD CS students interested in becoming teaching assistants. Developed collaboratively and submitted to the University Web Masters for potential full deployment.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">HTML/CSS</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">PHP</span>
+                    <span class="tech-tag">SQL</span>
+                </div>
+                <a href="https://www.youtube.com/watch?v=1hqT0V07hik" class="project-watch-btn" target="_blank">
+                    Watch demo <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="project-card fade-up">
+            <div class="project-video-wrap">
+                <iframe src="https://www.youtube.com/embed/S0BBw31RJLE" title="Space Force Game" allowfullscreen></iframe>
+                <div class="project-video-overlay" onclick="activateVideo(this)">
+                    <div class="play-btn"><i class="fas fa-play"></i></div>
+                </div>
+            </div>
+            <div class="project-body">
+                <div class="project-num">03 / Project</div>
+                <div class="project-title">Space Force: The Game</div>
+                <p class="project-desc">A Unity game featuring an O'Neill Cylinder physics system. Players explore a rogue space station using a laser gun and grappling hook. Final project for UMD's Game Programming course.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Unity</span>
+                    <span class="tech-tag">C#</span>
+                    <span class="tech-tag">Game Physics</span>
+                </div>
+                <a href="https://www.youtube.com/watch?v=S0BBw31RJLE" class="project-watch-btn" target="_blank">
+                    Watch demo <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ── FOOTER ── -->
 <footer>
-    &copy; Philip Gouldman 2021.<span class="glyphicon glyphicon-home"></span>
-    <span class="glyphicon glyphicon-user"></span>
-    <br />
-    <br />
-    <br />
-
+    <div class="footer-inner">
+        <div>
+            <div class="footer-brand">Philip Gouldman</div>
+            <div class="footer-copy">© 2025 · Built with care in the D.C. metro area</div>
+        </div>
+        <div class="footer-social">
+            <a href="https://www.github.com/thunderd568" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/philip-gouldman-59853a338/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/thunderd568/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/philip.gouldman" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="mailto:philipgouldman@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+    </div>
 </footer>
-<!-- The end -->
+
+<script>
+    // Cursor glow
+    const glow = document.getElementById('cursorGlow');
+    document.addEventListener('mousemove', e => {
+        glow.style.left = e.clientX + 'px';
+        glow.style.top = e.clientY + 'px';
+    });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Skill bar animation
+    const barObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.querySelectorAll('.skill-bar-inner').forEach((bar, i) => {
+                    setTimeout(() => bar.classList.add('animated'), i * 80);
+                });
+                barObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
+
+    const barSection = document.getElementById('skill-bars');
+    if (barSection) barObserver.observe(barSection);
+
+    // Video overlay click to play
+    function activateVideo(overlay) {
+        const wrap = overlay.parentElement;
+        const iframe = wrap.querySelector('iframe');
+        const src = iframe.src;
+        iframe.src = src + (src.includes('?') ? '&' : '?') + 'autoplay=1';
+        overlay.style.display = 'none';
+    }
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 80) {
+            nav.style.borderBottomColor = 'rgba(37,42,55,0.8)';
+        } else {
+            nav.style.borderBottomColor = 'var(--border)';
+        }
+    });
+</script>
+
+</body>
 </html>
