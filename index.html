@@ -545,6 +545,13 @@
             display: none;
         }
 
+        /* ── CREDLY BADGE IFRAME FIX ── */
+        /* Credly embeds render with light backgrounds — invert them to match dark theme */
+        .badge-card iframe {
+            filter: invert(1) hue-rotate(180deg);
+            border-radius: 8px;
+        }
+
         /* ── SKILLS ── */
         #skills-section {
             background: var(--surface);
