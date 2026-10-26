@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Philip Gouldman — Senior Consultant & Software Engineer" />
+    <meta name="description" content="Philip Gouldman &mdash; Senior Consultant &amp; Software Engineer" />
     <title>Philip Gouldman</title>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&amp;family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400&amp;family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" crossorigin="anonymous">
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -34,7 +34,7 @@
             line-height: 1.6;
         }
 
-        /* ── NOISE TEXTURE OVERLAY ── */
+        /* -- NOISE TEXTURE OVERLAY -- */
         body::before {
             content: '';
             position: fixed;
@@ -45,12 +45,12 @@
             opacity: 0.4;
         }
 
-        /* ── SCROLLBAR ── */
+        /* -- SCROLLBAR -- */
         ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: var(--bg); }
         ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
 
-        /* ── NAVBAR ── */
+        /* -- NAVBAR -- */
         nav {
             position: fixed;
             top: 0;
@@ -144,7 +144,7 @@
 
         .nav-social a:hover { color: var(--accent); transform: translateY(-2px); }
 
-        /* ── HERO ── */
+        /* -- HERO -- */
         #hero {
             min-height: 100vh;
             display: flex;
@@ -295,7 +295,7 @@
             background: var(--surface2);
         }
 
-        /* ── HERO PHOTO CARD ── */
+        /* -- HERO PHOTO CARD -- */
         .hero-photo-wrap {
             position: relative;
         }
@@ -396,7 +396,7 @@
             margin-top: 2px;
         }
 
-        /* ── SECTIONS COMMON ── */
+        /* -- SECTIONS COMMON -- */
         section {
             max-width: 1200px;
             margin: 0 auto;
@@ -443,7 +443,7 @@
             color: var(--white);
         }
 
-        /* ── DIVIDER ── */
+        /* -- DIVIDER -- */
         .section-divider {
             width: 100%;
             height: 1px;
@@ -451,7 +451,7 @@
             margin: 0;
         }
 
-        /* ── ABOUT ── */
+        /* -- ABOUT -- */
         #about-section {
             border-top: none;
         }
@@ -545,14 +545,14 @@
             display: none;
         }
 
-        /* ── CREDLY BADGE IFRAME FIX ── */
-        /* Credly embeds render with light backgrounds — invert them to match dark theme */
+        /* -- CREDLY BADGE IFRAME FIX -- */
+        /* Credly embeds render with light backgrounds &mdash; invert them to match dark theme */
         .badge-card iframe {
             filter: invert(1) hue-rotate(180deg);
             border-radius: 8px;
         }
 
-        /* ── SKILLS ── */
+        /* -- SKILLS -- */
         #skills-section {
             background: var(--surface);
             max-width: 100%;
@@ -640,7 +640,7 @@
             background: rgba(0,135,255,0.08);
         }
 
-        /* ── PROJECTS ── */
+        /* -- PROJECTS -- */
         #projects-section {
             border-top: none;
         }
@@ -777,7 +777,7 @@
 
         .project-watch-btn:hover { gap: 14px; }
 
-        /* ── FOOTER ── */
+        /* -- FOOTER -- */
         footer {
             border-top: 1px solid var(--border);
             background: var(--surface);
@@ -832,7 +832,7 @@
             background: var(--accent-dim);
         }
 
-        /* ── SCROLL ANIMATIONS ── */
+        /* -- SCROLL ANIMATIONS -- */
         .fade-up {
             opacity: 0;
             transform: translateY(30px);
@@ -848,7 +848,7 @@
         .fade-up:nth-child(3) { transition-delay: 0.2s; }
         .fade-up:nth-child(4) { transition-delay: 0.3s; }
 
-        /* ── CURSOR GLOW (desktop) ── */
+        /* -- CURSOR GLOW (desktop) -- */
         .cursor-glow {
             pointer-events: none;
             position: fixed;
@@ -861,7 +861,7 @@
             transition: left 0.15s ease, top 0.15s ease;
         }
 
-        /* ── RESPONSIVE ── */
+        /* -- RESPONSIVE -- */
         @media (max-width: 900px) {
             nav { padding: 0 24px; }
             .nav-links { display: none; }
@@ -884,7 +884,7 @@
 <!-- Cursor glow -->
 <div class="cursor-glow" id="cursorGlow"></div>
 
-<!-- ── NAVBAR ── -->
+<!-- -- NAVBAR -- -->
 <nav>
     <a href="#" class="nav-brand">Philip Gouldman</a>
     <ul class="nav-links">
@@ -900,7 +900,7 @@
     </div>
 </nav>
 
-<!-- ── HERO ── -->
+<!-- -- HERO -- -->
 <section id="hero" style="max-width:100%; padding-top:0; padding-bottom:0;">
     <div class="hero-grid-bg"></div>
     <div class="hero-glow"></div>
@@ -913,8 +913,8 @@
                 <span class="accent-text">Gouldman.</span>
             </h1>
             <p class="hero-description">
-                Software engineer & Salesforce specialist based in the D.C. metro area. 
-                9+ years turning complex problems into clean, scalable solutions — 
+                Software engineer &amp; Salesforce specialist based in the D.C. metro area. 
+                9+ years turning complex problems into clean, scalable solutions &mdash; 
                 across government consulting, full-stack development, and cybersecurity.
             </p>
             <div class="hero-ctas">
@@ -959,7 +959,7 @@
 
 <div class="section-divider"></div>
 
-<!-- ── ABOUT ── -->
+<!-- -- ABOUT -- -->
 <section id="about-section">
     <div class="section-header">
         <div class="section-tag">Background</div>
@@ -969,7 +969,7 @@
         <div class="about-text fade-up">
             <p>A native of the <strong>Washington D.C. metropolitan area</strong>, I've cultivated a passion for technology into a successful career as a <strong>Software Developer II at Booz Allen Hamilton</strong>, where I specialize in Salesforce development and enterprise software engineering.</p>
             <p>I hold a <strong>Bachelor of Science in Computer Science</strong> from the University of Maryland College Park, and I've spent nearly a decade building robust, scalable software solutions across government and commercial sectors.</p>
-            <p>Beyond the terminal, I'm an accomplished guitar player, culinary enthusiast, and anime & comic book aficionado. I believe great engineers bring broad curiosity to narrow problems.</p>
+            <p>Beyond the terminal, I'm an accomplished guitar player, culinary enthusiast, and anime &amp; comic book aficionado. I believe great engineers bring broad curiosity to narrow problems.</p>
             <p>
                 <i class="fas fa-envelope" style="color:var(--accent); margin-right:8px;"></i>
                 <a href="mailto:philipgouldman@gmail.com">philipgouldman@gmail.com</a>
@@ -1031,12 +1031,12 @@
 
 <div class="section-divider"></div>
 
-<!-- ── SKILLS ── -->
+<!-- -- SKILLS -- -->
 <div id="skills-section">
     <div class="inner">
         <div class="section-header">
             <div class="section-tag">Technical Profile</div>
-            <h2>Languages & Tools</h2>
+            <h2>Languages &amp; Tools</h2>
         </div>
         <div class="skills-layout">
             <div>
@@ -1091,7 +1091,7 @@
             </div>
 
             <div class="tools-section">
-                <h3 style="margin-bottom:28px; font-size:16px; color:var(--muted); font-family:'DM Mono',monospace; font-weight:400; letter-spacing:0.08em; text-transform:uppercase;">Environments & Tools</h3>
+                <h3 style="margin-bottom:28px; font-size:16px; color:var(--muted); font-family:'DM Mono',monospace; font-weight:400; letter-spacing:0.08em; text-transform:uppercase;">Environments &amp; Tools</h3>
                 <div class="tools-grid">
                     <span class="tool-chip">Salesforce LWC</span>
                     <span class="tool-chip">Salesforce CRM</span>
@@ -1128,7 +1128,7 @@
 
 <div class="section-divider"></div>
 
-<!-- ── PROJECTS ── -->
+<!-- -- PROJECTS -- -->
 <section id="projects-section">
     <div class="section-header">
         <div class="section-tag">Portfolio</div>
@@ -1145,7 +1145,7 @@
             </div>
             <div class="project-body">
                 <div class="project-num">01 / Project</div>
-                <div class="project-title">Lost & Found Android App</div>
+                <div class="project-title">Lost &amp; Found Android App</div>
                 <p class="project-desc">A mobile application for Android that lets users search and report lost or found items. Designed with Google Firebase as the real-time backend database and authentication layer.</p>
                 <div class="project-tech">
                     <span class="tech-tag">Android</span>
@@ -1209,7 +1209,7 @@
 
 <div class="section-divider"></div>
 
-<!-- ── FOOTER ── -->
+<!-- -- FOOTER -- -->
 <footer>
     <div class="footer-inner">
         <div>
